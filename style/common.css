@@ -7,7 +7,6 @@
 }
 /* 콜라 이름 표시 스타일 */
 .name-cola-style {
-  width: 100%;
   font-size: 9px;
   color: var(--text-color);
   white-space: nowrap;
@@ -34,7 +33,6 @@
 .cola-list-style {
   background-color: var(--background-sub-color);
   height: 46px;
-  margin: auto;
   border-radius: 4px;
   display: flex;
   align-items: center;
@@ -58,6 +56,9 @@
   width: 18px;
   height: 33px;
   margin-right: 10px;
+}
+.cola-list-style p {
+  width: calc(100% - 30px - 28px);
 }
 .cola-list-wrap-style {
   background-color: var(--background-main-color);

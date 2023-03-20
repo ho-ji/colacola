@@ -47,6 +47,7 @@ main {
 }
 .selling-cola-list p {
   text-align: center;
+  width: 100%;
 }
 
 .selling-cola-style {
