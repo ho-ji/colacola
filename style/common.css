@@ -1,0 +1,113 @@
+:root {
+  --main-color: #6327fe;
+  --background-main-color: #eae8fe;
+  --background-sub-color: #fff;
+  --text-color: #333333;
+  --border-color: #bdbdbd;
+}
+/* 콜라 이름 표시 스타일 */
+.name-cola-style {
+  width: 100%;
+  font-size: 9px;
+  color: var(--text-color);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+/* 금액 표시 스타일 */
+.money-style {
+  font-size: 14px;
+  display: flex;
+  height: 33px;
+  padding: 0 6px;
+  background-color: var(--background-main-color);
+  align-items: center;
+  border-radius: 5px;
+}
+.money-style span:first-child {
+  margin-right: auto;
+}
+.money-style span:last-child {
+  margin-left: 0.2em;
+}
+/* 콜라 리스트 스타일*/
+.cola-list-style {
+  background-color: var(--background-sub-color);
+  height: 46px;
+  margin: auto;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  padding-right: 10px;
+  padding-left: 8px;
+}
+.cola-list-style:not(:last-child) {
+  margin-bottom: 6px;
+}
+.cola-list-style :last-child {
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  text-align: center;
+  line-height: 30px;
+  margin-left: auto;
+}
+.cola-list-style img {
+  width: 18px;
+  height: 33px;
+  margin-right: 10px;
+}
+.cola-list-wrap-style {
+  background-color: var(--background-main-color);
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 12px;
+  scroll-margin: 4px;
+}
+.cola-list-wrap-style::-webkit-scrollbar {
+  width: 12px;
+}
+.cola-list-wrap-style::-webkit-scrollbar-thumb {
+  background-color: var(--background-sub-color);
+  background-clip: padding-box;
+  border: 4px solid transparent;
+  border-radius: 50px;
+}
+/* 품절 표시 */
+.sold-out {
+  width: 94px;
+  height: 130px;
+  position: absolute;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.sold-out-text {
+  box-sizing: border-box;
+  position: absolute;
+  bottom: calc(50% - 10px);
+  left: calc(50% - 22px);
+  text-align: center;
+  width: 45px;
+  height: 21px;
+  line-height: 15px;
+  color: var(--background-main-color);
+  border: 2px solid var(--background-main-color);
+  font-size: 14px;
+  font-weight: 900;
+  transform: rotate(-17deg);
+}
+.sold-out-text::after {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: -5px;
+  width: 47px;
+  height: 23px;
+  border: 2px solid var(--background-main-color);
+  cursor: default;
+}

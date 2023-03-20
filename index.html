@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>콜라콜라 자판기</title>
+    <link rel="stylesheet" href="./style/reset.css" />
+    <link rel="stylesheet" href="./style/common.css" />
+    <link rel="stylesheet" href="./style/index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>
+      <img src="./img/logo.svg" alt="cola cola" />
+      <strong class="a11y-hidden">콜라콜라 자판기</strong>
+    </h1>
+    <main>
+      <section class="vending-machine-container">
+        <h2 class="a11y-hidden">자판기 콜라구매</h2>
+        <ol class="selling-cola-list">
+          <li class="selling-cola-style">
+            <div class="a11y-hidden sold-out">
+              <div class="sold-out-text">품절</div>
+            </div>
+            <img src="./img/cola-01.svg" alt="Cola1" />
+            <p class="name-cola-style">Original_Cola</p>
+            <div class="price-cola">1000원</div>
+          </li>
+          <li class="selling-cola-style">
+            <div class="sold-out">
+              <div class="sold-out-text">품절</div>
+            </div>
+            <img src="./img/cola-02.svg" alt="Cola2" />
+            <p class="name-cola-style">Violet_Cola</p>
+            <div class="price-cola">1000원</div>
+          </li>
+          <li class="selling-cola-style">
+            <div class="a11y-hidden sold-out">
+              <div class="sold-out-text">품절</div>
+            </div>
+            <img src="./img/cola-03.svg" alt="Cola3" />
+            <p class="name-cola-style">Yellow_Cola</p>
+            <div class="price-cola">1000원</div>
+          </li>
+          <li class="selling-cola-style">
+            <div class="a11y-hidden sold-out">
+              <div class="sold-out-text">품절</div>
+            </div>
+            <img src="./img/cola-04.svg" alt="Cola4" />
+            <p class="name-cola-style">Cool_Cola</p>
+            <div class="price-cola">1000원</div>
+          </li>
+          <li class="selling-cola-style">
+            <div class="a11y-hidden sold-out">
+              <div class="sold-out-text">품절</div>
+            </div>
+            <img src="./img/cola-05.svg" alt="Cola5" />
+            <p class="name-cola-style">Green_Cola</p>
+            <div class="price-cola">1000원</div>
+          </li>
+          <li class="selling-cola-style">
+            <div class="a11y-hidden sold-out">
+              <div class="sold-out-text">품절</div>
+            </div>
+            <img src="./img/cola-06.svg" alt="Cola6" />
+            <p class="name-cola-style">Orange_Cola</p>
+            <div class="price-cola">1000원</div>
+          </li>
+        </ol>
+        <div class="purchase-container">
+          <div class="money-style">
+            <span>잔액:</span>
+            <span id="balance">1,000</span>
+            <span>원</span>
+          </div>
+          <button class="btn-money-style" id="btn-return-balance" type="button">
+            거스름돈 반환
+          </button>
+          <input
+            id="input-money"
+            type="text"
+            maxlength="6"
+            placeholder="입금액 입력"
+          />
+          <button class="btn-money-style" id="btn-input-money" type="button">
+            입금
+          </button>
+          <div class="cola-list-wrap-style">
+            <ul>
+              <li class="cola-list-style">
+                <img src="./img/cola-01.svg" alt="Cola1" />
+                <p class="name-cola-style">Original_Cola</p>
+                <div id="purchased-cola1">1</div>
+              </li>
+              <!-- <li class="cola-list-style">
+                <img src="./img/cola-02.svg" alt="Cola2">
+                <p class="name-cola-style">Violet_Cola</p>
+                <div id="purchased-cola2">0</div>
+              </li>
+              <li class="cola-list-style">
+                <img src="./img/cola-03.svg" alt="Cola3">
+                <p class="name-cola-style">Yellow_Cola</p>
+                <div id="purchased-cola3">0</div>
+              </li>
+              <li class="cola-list-style">
+                <img src="./img/cola-04.svg" alt="Cola4">
+                <p class="name-cola-style">Cool_Cola</p>
+                <div id="purchased-cola4">0</div>
+              </li> -->
+              <li class="cola-list-style">
+                <img src="./img/cola-05.svg" alt="Cola5" />
+                <p class="name-cola-style">Green_Cola</p>
+                <div id="purchased-cola5">1</div>
+              </li>
+              <!-- <li class="cola-list-style">
+                <img src="./img/cola-06.svg" alt="Cola6">                
+                <p class="name-cola-style">Orange_Cola</p>
+                <div id="purchased-cola6">0</div>
+              </li> -->
+            </ul>
+          </div>
+          <button id="btn-possession" type="button">획득</button>
+        </div>
+      </section>
+      <div class="possession-container">
+        <div class="possession-money-container">
+          <div class="money-style">
+            <span>소지금 :</span>
+            <span id="possession-money">25,000</span>
+            <span>원</span>
+          </div>
+        </div>
+        <section class="possession-cola-container">
+          <h2>획득한 음료</h2>
+          <div class="cola-list-wrap-style">
+            <ul>
+              <li class="cola-list-style">
+                <img src="./img/cola-01.svg" alt="Cola1" />
+                <p class="name-cola-style">Original_Cola</p>
+                <div id="possession-cola-original">1</div>
+              </li>
+              <li class="cola-list-style">
+                <img src="./img/cola-05.svg" alt="Cola5" />
+                <p class="name-cola-style">Green_Cola</p>
+                <div id="possession-cola-green">2</div>
+              </li>
+              <li class="cola-list-style">
+                <img src="./img/cola-06.svg" alt="Cola6" />
+                <p class="name-cola-style">Orange_Cola</p>
+                <div id="possession-cola-orange">1</div>
+              </li>
+              <li class="cola-list-style">
+                <img src="./img/cola-02.svg" alt="Cola2" />
+                <p class="name-cola-style">Violet_Cola</p>
+                <div id="possession-cola-violet">5</div>
+              </li>
+            </ul>
+          </div>
+          <div class="purchased-money-container">
+            <span>총금액 :</span>
+            <span id="purchased-money">9000</span>
+            <span>원</span>
+          </div>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
