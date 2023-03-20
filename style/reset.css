@@ -9,6 +9,7 @@ ul {
 }
 img {
   vertical-align: top;
+  -webkit-user-drag: none;
 }
 li {
   list-style: none;
