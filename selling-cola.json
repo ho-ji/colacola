@@ -1,0 +1,50 @@
+[
+  {
+    "name" : "Red Cola",
+    "price" : 1000,
+    "img" : "cola-red.svg",
+    "count" : 10
+  },
+  {
+    "name" : "Violet Cola",
+    "price" : 1500,
+    "img" : "cola-violet.svg",
+    "count" : 10
+  },
+  {
+    "name" : "Yellow Cola",
+    "price" : 1000,
+    "img" : "cola-yellow.svg",
+    "count" : 10
+  },
+  {
+    "name" : "SkyBlue Cola",
+    "price" : 1500,
+    "img" : "cola-sky-blue.svg",
+    "count" : 10
+  },
+  {
+    "name" : "Green Cola",
+    "price" : 1500,
+    "img" : "cola-green.svg",
+    "count" : 10
+  },
+  {
+    "name" : "Orange Cola",
+    "price" : 1000,
+    "img" : "cola-orange.svg",
+    "count" : 10
+  },
+  {
+    "name" : "Pink Cola",
+    "price" : 2000,
+    "img" : "cola-pink.svg",
+    "count" : 7
+  },
+  {
+    "name" : "Black Cola",
+    "price" : 3000,
+    "img" : "cola-black.svg",
+    "count" : 5
+  }
+]

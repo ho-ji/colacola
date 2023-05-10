@@ -45,7 +45,7 @@ main {
   grid-template-rows: 1fr;
   gap: 12px;
 }
-.selling-cola-list p {
+.selling-cola-list .name-cola-style {
   text-align: center;
   width: 100%;
 }
@@ -114,6 +114,9 @@ main {
 }
 #input-money:focus {
   outline-color: var(--main-color);
+}
+#input-money:invalid{
+  outline-color: red;
 }
 #btn-possession {
   background-color: var(--main-color);
