@@ -16,6 +16,9 @@ class ColaManagement {
   setColaCount(name, num){
     return this.colaList[name]["count"] += num;
   }
+  getPrice(name){
+    return this.colaList[name]["price"];
+  }
 }
 
 export default ColaManagement;

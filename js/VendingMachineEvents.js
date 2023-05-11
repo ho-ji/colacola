@@ -1,3 +1,4 @@
+import ColaManagement from "./ColaManagement.js";
 import colaManagement from "./index.js";
 class VendingMachineEvents{
   constructor(){
@@ -119,13 +120,17 @@ class VendingMachineEvents{
     /*획득 버튼선택 시*/
     this.btnPossession.addEventListener('click', e => {
       const list = this.purchasedColaList.querySelectorAll('li');
+      let total = 0;
       list.forEach(item => {
         const img = item.querySelector('img').getAttribute('src')
         const name = item.querySelector('.name-cola-style').textContent;
         const cnt = item.querySelector('.count-cola').textContent;
         this.addList(img, name, cnt, this.possessionColaList);
+        total += colaManagement.getPrice(name);
       });
       this.purchasedColaList.innerHTML = "";
+      this.purchasedMoney.dataset.money = parseInt(this.purchasedMoney.dataset.money)+total;
+      this.purchasedMoney.textContent = this.purchasedMoney.dataset.money.replace(/\B(?=(\d{3})+(?!\d))/g, ',');    
     })
   }
 }
