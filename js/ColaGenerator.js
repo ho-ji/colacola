@@ -1,3 +1,4 @@
+import colaManagement from "./index.js";
 class ColaGenerator {
   constructor() {
     this.sellingColaList = document.querySelector('.selling-cola-list');
@@ -25,29 +26,35 @@ class ColaGenerator {
     }
   }
   colaDisplay(data){
-    for(let i=0; i<6; i++){
-      const colaItem = document.createElement('li');
-      const colaImg = document.createElement('img');
-      const colaName = document.createElement('p');
-      const colaPrice = document.createElement('p');
-      
-      colaItem.setAttribute('class','selling-cola-style');
+    let cnt = 0;
+    data.forEach((item) => {
+      if(++cnt<=6){
+        const colaItem = document.createElement('button');
+        const colaImg = document.createElement('img');
+        const colaName = document.createElement('span');
+        const colaPrice = document.createElement('span');
+        
+        colaItem.setAttribute('class','selling-cola-style');
 
-      colaImg.setAttribute('src', `./img/${data[i].img}`);
-      colaImg.setAttribute('alt',`${data[i].name} 이미지`);
+        colaImg.setAttribute('src', `./img/${item.img}`);
+        colaImg.setAttribute('alt',`${item.name} 이미지`);
 
-      colaName.setAttribute('class', 'name-cola-style');
-      colaName.textContent = data[i].name;
+        colaName.setAttribute('class', 'name-cola-style');
+        colaName.textContent = item.name;
 
-      colaPrice.setAttribute('class','price-cola');
-      colaPrice.textContent = `${data[i].price}원`;
+        colaPrice.setAttribute('class','price-cola');
+        colaPrice.textContent = `${item.price}원`;
 
-      colaItem.append(colaImg);
-      colaItem.append(colaName);
-      colaItem.append(colaPrice);
-
-      this.sellingColaList.append(colaItem);
-    }
+        colaItem.append(colaImg);
+        colaItem.append(colaName);
+        colaItem.append(colaPrice);
+        this.sellingColaList.append(colaItem);
+        colaManagement.saveCola(item, true);
+      }
+      else{
+        colaManagement.saveCola(item, false);
+      }
+    });
   }
 }
 

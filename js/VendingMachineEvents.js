@@ -1,3 +1,4 @@
+import colaManagement from "./index.js";
 class VendingMachineEvents{
   constructor(){
     const vm = document.querySelector('.vending-machine-container');
@@ -13,12 +14,13 @@ class VendingMachineEvents{
     this.possessionColaList = pc.querySelector('#possession-cola-list');
     this.purchasedMoney = pc.querySelector('#purchased-money');
   }
+  /*인자로 받은 리스트에 콜라 추가*/
   addList(img, name, cnt, list){
     const target = list.querySelectorAll('li');
     let isSelected = false;
     target.forEach(item => {
-      if(item.children[1].textContent == name){
-        item.children[2].textContent = parseInt(item.children[2].textContent) + parseInt(cnt);
+      if(item.querySelector('.name-cola-style').textContent == name){
+        item.querySelector('.count-cola').textContent = parseInt(item.querySelector('.count-cola').textContent) + parseInt(cnt);
         isSelected = true;
       }
     })
@@ -26,7 +28,8 @@ class VendingMachineEvents{
       const colaItem = document.createElement('li');
       const colaImg = document.createElement('img');
       const colaName = document.createElement('p');
-      const colaCnt = document.createElement('div');
+      const colaCnt = document.createElement('p');
+      const cntText = document.createElement('span');
 
       colaItem.setAttribute('class','cola-list-style');
       
@@ -34,27 +37,50 @@ class VendingMachineEvents{
       colaImg.setAttribute('alt',`${name} 이미지`);
       colaName.setAttribute('class','name-cola-style');
       colaName.textContent = name;
-      colaCnt.textContent = cnt;
+      colaCnt.textContent = parseInt(cnt);
+      colaCnt.setAttribute('class','count-cola');
+      cntText.textContent = '개';
+      cntText.setAttribute('class','a11y-hidden');
+
+      colaCnt.append(cntText);
 
       colaItem.append(colaImg);
       colaItem.append(colaName);
       colaItem.append(colaCnt);
 
       list.append(colaItem);
+
     }
   }
+  /*품절표시*/
+  setSoldOut(item){
+    const soldOutBox = document.createElement('div');
+    const soldOutText = document.createElement('p');
+    soldOutBox.setAttribute('class', 'sold-out');
+    soldOutText.setAttribute('class','sold-out-text');
+    soldOutText.textContent = "품절";
+    soldOutBox.append(soldOutText);
+    item.append(soldOutBox);
+    item.disabled = true;
+  }
   bindEvent(){
-    this.colaList = document.querySelectorAll('.selling-cola-list li');
+    this.colaList = document.querySelectorAll('.selling-cola-list button');
     /*자판기에서 콜라선택 시*/
     this.colaList.forEach(item => {
       item.addEventListener('click', e => {
-        const colaImg = item.children[0].getAttribute('src');
-        const colaName = item.children[1].textContent;
-        const colaPrice = parseInt(item.children[2].textContent);
+        const colaImg = item.querySelector('img').getAttribute('src');
+        const colaName = item.querySelector('.name-cola-style').textContent;
+        const colaPrice = parseInt(item.querySelector('.price-cola').textContent);
         if(parseInt(this.balance.dataset.money) >= colaPrice){
-          this.addList(colaImg, colaName, 1, this.purchasedColaList); 
-          this.balance.dataset.money = parseInt(this.balance.dataset.money) - colaPrice;
-          this.balance.textContent = this.balance.dataset.money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+          if(colaManagement.getColaCount(colaName) > 0){          
+            this.addList(colaImg, colaName, 1, this.purchasedColaList); 
+            this.balance.dataset.money = parseInt(this.balance.dataset.money) - colaPrice;
+            this.balance.textContent = this.balance.dataset.money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            const cnt = colaManagement.setColaCount(colaName, -1);
+            if(cnt === 0){
+              this.setSoldOut(item);
+            }
+          }
         }
         else{
           alert('돈을 더 넣어주세요!');
@@ -94,9 +120,9 @@ class VendingMachineEvents{
     this.btnPossession.addEventListener('click', e => {
       const list = this.purchasedColaList.querySelectorAll('li');
       list.forEach(item => {
-        const img = item.children[0].getAttribute('src')
-        const name = item.children[1].textContent;
-        const cnt = item.children[2].textContent;
+        const img = item.querySelector('img').getAttribute('src')
+        const name = item.querySelector('.name-cola-style').textContent;
+        const cnt = item.querySelector('.count-cola').textContent;
         this.addList(img, name, cnt, this.possessionColaList);
       });
       this.purchasedColaList.innerHTML = "";

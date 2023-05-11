@@ -67,7 +67,7 @@ main {
   aspect-ratio: 36 / 65;
   object-fit: cover;
 }
-.selling-cola-list p {
+.selling-cola-list span {
   cursor: pointer;
 }
 .selling-cola-style .price-cola {
@@ -83,7 +83,7 @@ main {
   cursor: pointer;
 }
 
-.selling-cola-list li:hover {
+.selling-cola-list button:not(:disabled):hover  {
   outline: 3px solid var(--main-color);
   box-shadow: none;
 }

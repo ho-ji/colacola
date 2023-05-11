@@ -3,13 +3,13 @@
     "name" : "Red Cola",
     "price" : 1000,
     "img" : "cola-red.svg",
-    "count" : 10
+    "count" : 1
   },
   {
     "name" : "Violet Cola",
     "price" : 1500,
     "img" : "cola-violet.svg",
-    "count" : 10
+    "count" : 3
   },
   {
     "name" : "Yellow Cola",
@@ -46,5 +46,11 @@
     "price" : 3000,
     "img" : "cola-black.svg",
     "count" : 5
+  },
+  {
+    "name" : "Blue Cola",
+    "price" : 2000,
+    "img" : "cola-blue.svg",
+    "count" : 3
   }
 ]
