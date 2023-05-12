@@ -14,6 +14,12 @@ class VendingMachineEvents{
     this.possessionMoney = pc.querySelector('#possession-money');
     this.possessionColaList = pc.querySelector('#possession-cola-list');
     this.purchasedMoney = pc.querySelector('#purchased-money');
+    
+    this.btnManager = document.querySelector('#btn-manager');
+
+    this.btnAudio = new Audio('../sound/btn.mp3');
+    this.dropAudio = new Audio('../sound/drop-can.mp3');
+    this.getAudio = new Audio('../sound/get.mp3');
   }
   /*인자로 받은 리스트에 콜라 추가*/
   addList(img, name, cnt, list){
@@ -69,12 +75,14 @@ class VendingMachineEvents{
     /*자판기에서 콜라선택 시*/
     this.colaList.forEach(item => {
       item.addEventListener('click', e => {
+        this.btnAudio.play();
         const colaImg = item.querySelector('img').getAttribute('src');
         const colaName = item.querySelector('.name-cola-style').textContent;
         const colaPrice = parseInt(item.querySelector('.price-cola').textContent);
         if(parseInt(this.balance.dataset.money) >= colaPrice){
           if(colaManagement.getColaCount(colaName) > 0){          
-            this.addList(colaImg, colaName, 1, this.purchasedColaList); 
+            this.addList(colaImg, colaName, 1, this.purchasedColaList);
+            this.dropAudio.play(); 
             this.balance.dataset.money = parseInt(this.balance.dataset.money) - colaPrice;
             this.balance.textContent = this.balance.dataset.money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
             const cnt = colaManagement.setColaCount(colaName, -1);
@@ -90,17 +98,21 @@ class VendingMachineEvents{
     })
     /*거스롬돈 반환 버튼선택 시*/
     this.btnBalance.addEventListener('click', e => {
-      const money = parseInt(this.possessionMoney.dataset.money) + parseInt(this.balance.dataset.money);
-      this.possessionMoney.textContent = money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-      this.possessionMoney.dataset.money = money;
-      this.balance.dataset.money = 0;
-      this.balance.textContent = "0";
+      if(parseInt(this.possessionMoney.dataset.money)>0){
+        this.btnAudio.play();
+        const money = parseInt(this.possessionMoney.dataset.money) + parseInt(this.balance.dataset.money);
+        this.possessionMoney.textContent = money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        this.possessionMoney.dataset.money = money;
+        this.balance.dataset.money = 0;
+        this.balance.textContent = "0";
+      }
     })
     /*입금 버튼선택 시*/
     this.btnInputMoney.addEventListener('click', e => {
       if(this.inputMoney.value && this.inputMoney.validity.valid){
         const money = parseInt(this.possessionMoney.dataset.money) - parseInt(this.inputMoney.value);
         if(money >= 0){
+          this.btnAudio.play();
           this.possessionMoney.dataset.money = money
           this.possessionMoney.textContent = money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
@@ -122,6 +134,7 @@ class VendingMachineEvents{
       const list = this.purchasedColaList.querySelectorAll('li');
       let total = 0;
       list.forEach(item => {
+        this.getAudio.play();
         const img = item.querySelector('img').getAttribute('src')
         const name = item.querySelector('.name-cola-style').textContent;
         const cnt = item.querySelector('.count-cola').textContent;
@@ -131,6 +144,9 @@ class VendingMachineEvents{
       this.purchasedColaList.innerHTML = "";
       this.purchasedMoney.dataset.money = parseInt(this.purchasedMoney.dataset.money)+total;
       this.purchasedMoney.textContent = this.purchasedMoney.dataset.money.replace(/\B(?=(\d{3})+(?!\d))/g, ',');    
+    })
+    this.btnManager.addEventListener('click', e=> {
+      console.log("hi");
     })
   }
 }
