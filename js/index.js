@@ -1,14 +1,12 @@
-import ColaGenerator from './ColaGenerator.js';
-import VendingMachineEvents from './VendingMachineEvents.js';
-import ColaManagement from './ColaManagement.js';
+import ColaGenerator from "./ColaGenerator.js";
+import VendingMachineEvents from "./VendingMachineEvents.js";
+import ColaList from "./ColaList.js";
 
-const colaGenerator = new ColaGenerator();
+export const colaGenerator = new ColaGenerator();
 const vendingMachineEvents = new VendingMachineEvents();
-const colaManagement = new ColaManagement();
+export const colaList = new ColaList();
 
-(async function(){
+(async function () {
   await colaGenerator.start();
   vendingMachineEvents.bindEvent();
 })();
-
-export default colaManagement;

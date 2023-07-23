@@ -10,10 +10,7 @@
     <link rel="stylesheet" href="./style/index.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet" />
   </head>
   <body>
     <h1>
@@ -23,30 +20,18 @@
     <main>
       <section class="vending-machine-container">
         <h2 class="a11y-hidden">자판기 콜라구매</h2>
-        <div class="selling-cola-list">
-        </div>
+        <div class="selling-cola-list"></div>
         <div class="purchase-container">
           <div class="money-style">
             <span>잔액:</span>
-            <span id="balance" data-money=0>0</span>
+            <span id="balance" data-money="0">0</span>
             <span>원</span>
           </div>
-          <button class="btn-money-style" id="btn-return-balance" type="button">
-            거스름돈 반환
-          </button>
-          <input
-            id="input-money"
-            type="number"
-            min="0"
-            pattern="[0-9]+"
-            placeholder="입금액 입력"
-          />
-          <button class="btn-money-style" id="btn-input-money" type="button">
-            입금
-          </button>
+          <button class="btn-money-style" id="btn-return-balance" type="button">거스름돈 반환</button>
+          <input id="input-money" type="number" min="0" pattern="[0-9]+" placeholder="입금액 입력" />
+          <button class="btn-money-style" id="btn-input-money" type="button">입금</button>
           <div class="cola-list-wrap-style">
-            <ul id="purchased-cola-list">
-            </ul>
+            <ul id="purchased-cola-list"></ul>
           </div>
           <button id="btn-possession" type="button">획득</button>
         </div>
@@ -55,25 +40,54 @@
         <div class="possession-money-container">
           <div class="money-style">
             <span>소지금 :</span>
-            <span id="possession-money" data-money=10000>10,000</span>
+            <span id="possession-money" data-money="10000">10,000</span>
             <span>원</span>
           </div>
         </div>
         <section class="possession-cola-container">
           <h2>획득한 음료</h2>
           <div class="cola-list-wrap-style">
-            <ul id="possession-cola-list">
-            </ul>
+            <ul id="possession-cola-list"></ul>
           </div>
           <div class="purchased-money-container">
             <span>총금액 :</span>
-            <span id="purchased-money" data-money=0>0</span>
+            <span id="purchased-money" data-money="0">0</span>
             <span>원</span>
           </div>
         </section>
       </div>
     </main>
-    <button type="button" id="btn-manager"><span class="a11y-hidden">관리자모드</span></button>
-    <script type="module" src="./js/index.js"></script>
+    <section class="manage-container">
+      <h2 class="a11y-hidden">관리자모드</h2>
+      <button type="button" id="btn-manage"></button>
+      <script type="module" src="./js/index.js"></script>
+      <dialog id="dialog-pw">
+        <div class="pw-wrapper">
+          <div class="pw-digit">
+            <img src="./img/pw.svg" id="pw-input-1" alt="*" />
+            <img src="./img/pw.svg" id="pw-input-2" alt="*" />
+            <img src="./img/pw.svg" id="pw-input-3" alt="*" />
+            <img src="./img/pw.svg" id="pw-input-4" alt="*" />
+          </div>
+          <div class="pw-number-container">
+            <button type="button" class="pw" data-number="1">1</button>
+            <button type="button" class="pw" data-number="2">2</button>
+            <button type="button" class="pw" data-number="3">3</button>
+            <button type="button" class="pw" data-number="4">4</button>
+            <button type="button" class="pw" data-number="5">5</button>
+            <button type="button" class="pw" data-number="6">6</button>
+            <button type="button" class="pw" data-number="7">7</button>
+            <button type="button" class="pw" data-number="8">8</button>
+            <button type="button" class="pw" data-number="9">9</button>
+            <button type="button" class="pw" data-number="del">지우기</button>
+            <button type="button" class="pw" data-number="0">0</button>
+            <button type="button" class="pw" data-number="close">닫기</button>
+          </div>
+        </div>
+      </dialog>
+      <dialog id="dialog-manage">
+        <ul class="manage-cola-list"></ul>
+      </dialog>
+    </section>
   </body>
 </html>
